@@ -1,0 +1,165 @@
+{
+  "name": "harmonyos-previewer",
+  "displayName": "HarmonyOS Previewer",
+  "description": "HarmonyOS应用预览器，支持实时预览ArkTS/JS应用",
+  "version": "0.0.1",
+  "publisher": "harmonyos-dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openharmony/previewer_client.git"
+  },
+  "homepage": "https://github.com/openharmony/previewer_client#readme",
+  "bugs": {
+    "url": "https://github.com/openharmony/previewer_client/issues"
+  },
+  "engines": {
+    "vscode": "^1.74.0",
+    "node": ">=18.0.0"
+  },
+  "categories": [
+    "Other",
+    "Debuggers"
+  ],
+  "keywords": [
+    "harmonyos",
+    "arkts",
+    "previewer",
+    "openharmony"
+  ],
+  "activationEvents": [
+    "onCommand:harmonyPreviewer.start",
+    "onCommand:harmonyPreviewer.stop",
+    "workspaceContains:**/*.ets"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "harmonyPreviewer.start",
+        "title": "启动预览器",
+        "category": "HarmonyOS Previewer",
+        "icon": "$(play)"
+      },
+      {
+        "command": "harmonyPreviewer.stop",
+        "title": "停止预览器",
+        "category": "HarmonyOS Previewer",
+        "icon": "$(stop)"
+      },
+      {
+        "command": "harmonyPreviewer.refresh",
+        "title": "刷新预览",
+        "category": "HarmonyOS Previewer",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "harmonyPreviewer.screenshot",
+        "title": "截图",
+        "category": "HarmonyOS Previewer",
+        "icon": "$(camera)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "when": "resourceExtname == .ets",
+          "command": "harmonyPreviewer.start",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "harmonyPreviewer.start",
+          "when": "workspaceFolderCount > 0"
+        },
+        {
+          "command": "harmonyPreviewer.stop",
+          "when": "harmonyPreviewer.active"
+        },
+        {
+          "command": "harmonyPreviewer.refresh",
+          "when": "harmonyPreviewer.active"
+        },
+        {
+          "command": "harmonyPreviewer.screenshot",
+          "when": "harmonyPreviewer.active"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "HarmonyOS Previewer",
+      "properties": {
+        "harmonyPreviewer.websocket.host": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "description": "WebSocket服务器地址"
+        },
+        "harmonyPreviewer.websocket.port": {
+          "type": "number",
+          "default": 5577,
+          "description": "WebSocket服务器端口"
+        },
+        "harmonyPreviewer.autoConnect": {
+          "type": "boolean",
+          "default": true,
+          "description": "自动连接到预览器组件"
+        },
+        "harmonyPreviewer.autoRefresh": {
+          "type": "boolean",
+          "default": true,
+          "description": "文件保存时自动刷新预览"
+        },
+        "harmonyPreviewer.device.width": {
+          "type": "number",
+          "default": 360,
+          "description": "设备屏幕宽度"
+        },
+        "harmonyPreviewer.device.height": {
+          "type": "number",
+          "default": 780,
+          "description": "设备屏幕高度"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "lint:fix": "eslint src --ext ts --fix",
+    "test": "npm run test:unit",
+    "test:unit": "npm run compile && node --no-warnings ./out/test/runTest.js",
+    "test:coverage": "npm run compile && nyc node --no-warnings ./out/test/runTest.js",
+    "test:watch": "npm run compile && npm run test:unit",
+    "coverage:report": "nyc report --reporter=html",
+    "package": "vsce package --no-dependencies",
+    "clean": "rm -rf out node_modules package-lock.json coverage"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "18.x",
+    "@types/ws": "^8.5.4",
+    "@types/mocha": "^10.0.1",
+    "@types/sinon": "^10.0.15",
+    "@types/glob": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.28.0",
+    "typescript": "^5.0.0",
+    "@vscode/test-electron": "^2.3.0",
+    "@vscode/vsce": "^2.19.0",
+    "mocha": "^10.2.0",
+    "sinon": "^15.0.4",
+    "nyc": "^15.1.0",
+    "glob": "^10.3.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2"
+  },
+  "dependencies": {
+    "ws": "^8.13.0"
+  },
+  "overrides": {
+    "undici": "^5.20.0"
+  }
+}

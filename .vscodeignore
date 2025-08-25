@@ -1,0 +1,52 @@
+# Development files
+src/**
+.vscode/
+tsconfig.json
+.eslintrc.json
+.nvmrc
+.nycrc.json
+
+# Test files
+**/test/**
+**/*.test.*
+**/*.spec.*
+coverage/
+
+# Documentation and project files
+PROJECT_STATUS.md
+*.md
+!README.md
+
+# Dependencies and build artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build and temporary files
+.nyc_output/
+coverage/
+.cache/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.idea/
+*.swp
+*.swo
+*~
+
+# Git files
+.git/
+.gitignore
+
+# Package files
+*.vsix
+*.tgz
