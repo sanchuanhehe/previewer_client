@@ -131,11 +131,13 @@
     "lint:fix": "eslint src --ext ts --fix",
     "test": "npm run test:unit",
     "test:unit": "npm run compile && node --no-warnings ./out/test/runTest.js",
+    "test:integration": "npm run setup-sdk && npm run test:unit",
     "test:coverage": "npm run compile && nyc node --no-warnings ./out/test/runTest.js",
     "test:watch": "npm run compile && npm run test:unit",
+    "setup-sdk": "node scripts/setup-previewer-sdk.js",
     "coverage:report": "nyc report --reporter=html",
     "package": "vsce package --no-dependencies",
-    "clean": "rm -rf out node_modules package-lock.json coverage"
+    "clean": "rm -rf out node_modules package-lock.json coverage .sdk-cache"
   },
   "devDependencies": {
     "@types/vscode": "^1.74.0",

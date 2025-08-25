@@ -98,5 +98,8 @@ docs/
 *_REPORT.md
 *_GUIDE.md
 
+# SDK cache directory for integration tests
+.sdk-cache/
+
 # Lock files (keep package-lock.json for consistent installs)
 yarn.lock

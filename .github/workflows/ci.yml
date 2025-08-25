@@ -40,6 +40,16 @@ jobs:
       env:
         NODE_ENV: test
         
+    - name: Run integration tests with SDK
+      run: |
+        # 设置虚拟显示器用于GUI应用
+        export DISPLAY=:99
+        # 运行集成测试（包含SDK下载和测试）
+        xvfb-run -a npm run test:integration
+      env:
+        NODE_ENV: test
+      continue-on-error: true  # SDK集成测试可能因网络问题失败，不阻止主要测试
+        
     - name: Run tests with coverage
       run: |
         xvfb-run -a npm run test:coverage
