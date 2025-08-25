@@ -7,16 +7,6 @@ suite('Extension Integration Test Suite', () => {
         assert.ok(vscode.extensions.getExtension('harmonyos-dev.harmonyos-previewer'));
     });
 
-    test('Should register all commands', async () => {
-        const commands = await vscode.commands.getCommands();
-        
-        // Check if our commands are registered
-        assert.ok(commands.includes('harmonyPreviewer.start'));
-        assert.ok(commands.includes('harmonyPreviewer.stop'));
-        assert.ok(commands.includes('harmonyPreviewer.refresh'));
-        assert.ok(commands.includes('harmonyPreviewer.screenshot'));
-    });
-
     test('Should activate extension on command', async () => {
         const extension = vscode.extensions.getExtension('harmonyos-dev.harmonyos-previewer');
         assert.ok(extension);
@@ -26,6 +16,27 @@ suite('Extension Integration Test Suite', () => {
         }
         
         assert.ok(extension?.isActive);
+    });
+
+    test('Should register all commands', async () => {
+        // Ensure extension is activated first
+        const extension = vscode.extensions.getExtension('harmonyos-dev.harmonyos-previewer');
+        assert.ok(extension);
+        
+        if (!extension.isActive) {
+            await extension.activate();
+        }
+        
+        // Give a small delay to ensure commands are registered
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        const commands = await vscode.commands.getCommands();
+        
+        // Check if our commands are registered
+        assert.ok(commands.includes('harmonyPreviewer.start'), 'harmonyPreviewer.start command should be registered');
+        assert.ok(commands.includes('harmonyPreviewer.stop'), 'harmonyPreviewer.stop command should be registered');
+        assert.ok(commands.includes('harmonyPreviewer.refresh'), 'harmonyPreviewer.refresh command should be registered');
+        assert.ok(commands.includes('harmonyPreviewer.screenshot'), 'harmonyPreviewer.screenshot command should be registered');
     });
 
     test('Configuration should have default values', () => {
