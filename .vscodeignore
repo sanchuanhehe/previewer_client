@@ -13,9 +13,12 @@ tsconfig.json
 coverage/
 
 # Documentation and project files
-PROJECT_STATUS.md
+docs/
 *.md
 !README.md
+
+# CI/CD files
+.github/
 
 # Dependencies and build artifacts
 node_modules/

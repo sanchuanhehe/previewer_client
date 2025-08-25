@@ -87,5 +87,16 @@ coverage/
 screenshots/
 temp/
 
+# Development documentation (keep in local docs/ folder)
+docs/
+*.md
+!README.md
+!CHANGELOG.md
+
+# Development reports and status files
+*_STATUS.md
+*_REPORT.md
+*_GUIDE.md
+
 # Lock files (keep package-lock.json for consistent installs)
 yarn.lock

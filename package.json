@@ -6,11 +6,11 @@
   "publisher": "harmonyos-dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openharmony/previewer_client.git"
+    "url": "https://github.com/sanchuanhehe/previewer_client.git"
   },
-  "homepage": "https://github.com/openharmony/previewer_client#readme",
+  "homepage": "https://github.com/sanchuanhehe/previewer_client#readme",
   "bugs": {
-    "url": "https://github.com/openharmony/previewer_client/issues"
+    "url": "https://github.com/sanchuanhehe/previewer_client/issues"
   },
   "engines": {
     "vscode": "^1.74.0",
