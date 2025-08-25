@@ -1,0 +1,224 @@
+{
+    "folders": [
+        {
+            "name": "📱 HarmonyOS Test App",
+            "path": "."
+        },
+        {
+            "name": "🔧 Extension Source",
+            "path": ".."
+        }
+    ],
+    "settings": {
+        // HarmonyOS Previewer扩展设置
+        "harmonyosPreviewer.websocket.host": "127.0.0.1",
+        "harmonyosPreviewer.websocket.port": 5577,
+        "harmonyosPreviewer.autoConnect": true,
+        "harmonyosPreviewer.autoRefresh": true,
+        "harmonyosPreviewer.device.width": 360,
+        "harmonyosPreviewer.device.height": 780,
+        "harmonyosPreviewer.panel.showOnStart": true,
+        "harmonyosPreviewer.logging.level": "debug",
+        
+        // 开发环境设置
+        "typescript.preferences.includePackageJsonAutoImports": "on",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit"
+        },
+        
+        // 文件关联
+        "files.associations": {
+            "*.ets": "typescript",
+            "*.json5": "json5"
+        },
+        
+        // 搜索排除
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/out": true,
+            "**/.vscode-test": true,
+            "**/.sdk-cache": true,
+            "**/hvigor": true,
+            "**/build": true
+        },
+        
+        // 调试设置
+        "debug.allowBreakpointsEverywhere": true,
+        "debug.inlineValues": "on",
+        
+        // 终端设置
+        "terminal.integrated.defaultProfile.linux": "zsh"
+    },
+    "extensions": {
+        "recommendations": [
+            "sanchuanhehe.harmonyos-previewer",
+            "ms-vscode.vscode-typescript-next",
+            "dbaeumer.vscode-eslint",
+            "hbenl.vscode-mocha-test-adapter"
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "🔨 Build Extension",
+                "type": "npm",
+                "script": "compile",
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "options": {
+                    "cwd": "${workspaceFolder}/.."
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "silent",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": ["$tsc"]
+            },
+            {
+                "label": "👀 Watch Extension",
+                "type": "npm",
+                "script": "watch",
+                "group": "build",
+                "options": {
+                    "cwd": "${workspaceFolder}/.."
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "silent",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": ["$tsc-watch"],
+                "isBackground": true
+            },
+            {
+                "label": "🧪 Run All Tests",
+                "type": "npm",
+                "script": "test",
+                "group": {
+                    "kind": "test",
+                    "isDefault": true
+                },
+                "options": {
+                    "cwd": "${workspaceFolder}/.."
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                }
+            },
+            {
+                "label": "🔍 Lint Code",
+                "type": "npm",
+                "script": "lint",
+                "group": "test",
+                "options": {
+                    "cwd": "${workspaceFolder}/.."
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                }
+            },
+            {
+                "label": "📦 Package Extension",
+                "type": "npm",
+                "script": "package",
+                "group": "build",
+                "options": {
+                    "cwd": "${workspaceFolder}/.."
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                }
+            },
+            {
+                "label": "⚙️ Setup SDK",
+                "type": "shell",
+                "command": "node",
+                "args": ["../scripts/setup-previewer-sdk.js"],
+                "group": "test",
+                "options": {
+                    "cwd": "${workspaceFolder}/.."
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                }
+            },
+            {
+                "label": "🏗️ Build HarmonyOS App",
+                "type": "shell",
+                "command": "./hvigorw",
+                "args": ["assembleHap"],
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "🧹 Clean All",
+                "type": "shell",
+                "command": "npm",
+                "args": ["run", "clean"],
+                "group": "build",
+                "options": {
+                    "cwd": "${workspaceFolder}/.."
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                }
+            }
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "🚀 Debug Extension",
+                "type": "extensionHost",
+                "request": "launch",
+                "args": [
+                    "--extensionDevelopmentPath=${workspaceFolder}/..",
+                    "${workspaceFolder}"
+                ],
+                "outFiles": ["${workspaceFolder}/../out/**/*.js"],
+                "preLaunchTask": "🔨 Build Extension"
+            },
+            {
+                "name": "🧪 Debug Tests",
+                "type": "extensionHost",
+                "request": "launch",
+                "args": [
+                    "--extensionDevelopmentPath=${workspaceFolder}/..",
+                    "--extensionTestsPath=${workspaceFolder}/../out/test/suite/index",
+                    "${workspaceFolder}"
+                ],
+                "outFiles": ["${workspaceFolder}/../out/**/*.js"],
+                "preLaunchTask": "🔨 Build Extension"
+            }
+        ]
+    }
+}

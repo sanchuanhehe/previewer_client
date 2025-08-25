@@ -1,0 +1,110 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "🚀 Launch Extension (Development)",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}/..",
+                "${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/../out/**/*.js"
+            ],
+            "preLaunchTask": "Build Extension",
+            "sourceMaps": true,
+            "smartStep": true,
+            "showAsyncStacks": true
+        },
+        {
+            "name": "🧪 Run Extension Tests",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}/..",
+                "--extensionTestsPath=${workspaceFolder}/../out/test/suite/index",
+                "${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/../out/**/*.js"
+            ],
+            "preLaunchTask": "Build Extension",
+            "sourceMaps": true
+        },
+        {
+            "name": "🔍 Debug Extension Tests",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}/..",
+                "--extensionTestsPath=${workspaceFolder}/../out/test/suite/index",
+                "${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/../out/**/*.js"
+            ],
+            "preLaunchTask": "Build Extension",
+            "sourceMaps": true,
+            "trace": true
+        },
+        {
+            "name": "⚡ Launch Extension (Watch Mode)",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}/..",
+                "${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/../out/**/*.js"
+            ],
+            "preLaunchTask": "Watch Extension",
+            "sourceMaps": true
+        },
+        {
+            "name": "🎯 Launch Extension (Debug Mode)",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}/..",
+                "${workspaceFolder}",
+                "--enable-proposed-api=sanchuanhehe.harmonyos-previewer"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/../out/**/*.js"
+            ],
+            "preLaunchTask": "Build Extension",
+            "sourceMaps": true,
+            "env": {
+                "VSCODE_DEBUG_MODE": "true",
+                "HARMONY_PREVIEWER_DEBUG": "true"
+            }
+        },
+        {
+            "name": "🧪 Integration Tests Only",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}/..",
+                "--extensionTestsPath=${workspaceFolder}/../out/test/suite/integration.test.js",
+                "${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/../out/**/*.js"
+            ],
+            "preLaunchTask": "Build Extension",
+            "sourceMaps": true
+        },
+        {
+            "name": "📦 Test Packaged Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "args": [
+                "--install-extension=${workspaceFolder}/../harmonyos-previewer-1.0.0.vsix",
+                "${workspaceFolder}"
+            ],
+            "preLaunchTask": "Package Extension"
+        }
+    ]
+}

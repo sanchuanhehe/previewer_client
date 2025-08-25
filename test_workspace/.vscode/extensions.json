@@ -1,0 +1,35 @@
+{
+    "recommendations": [
+        // TypeScript相关
+        "ms-vscode.vscode-typescript-next",
+        
+        // 测试相关
+        "hbenl.vscode-mocha-test-adapter",
+        "ms-vscode.test-adapter-converter",
+        
+        // 调试相关
+        "ms-vscode.js-debug",
+        
+        // 代码质量
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        
+        // Git工具
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        
+        // HarmonyOS开发
+        "huawei.harmonyos-app-dev",
+        
+        // 其他实用工具
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "bradlc.vscode-tailwindcss"
+    ],
+    "unwantedRecommendations": [
+        "ms-vscode.vscode-typescript",
+        "hookyqr.beautify"
+    ]
+}

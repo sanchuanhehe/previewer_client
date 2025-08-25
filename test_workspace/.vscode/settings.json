@@ -1,0 +1,81 @@
+{
+    // 编辑器设置
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    
+    // TypeScript设置
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "typescript.suggest.autoImports": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    
+    // 文件关联
+    "files.associations": {
+        "*.ets": "typescript",
+        "*.json5": "json5"
+    },
+    
+    // 搜索排除
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/out": true,
+        "**/.vscode-test": true,
+        "**/.sdk-cache": true,
+        "**/hvigor": true,
+        "**/build": true
+    },
+    
+    // 文件监听排除
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/out/**": true,
+        "**/.vscode-test/**": true,
+        "**/.sdk-cache/**": true,
+        "**/hvigor/**": true,
+        "**/build/**": true
+    },
+    
+    // HarmonyOS Previewer扩展设置
+    "harmonyosPreviewer.websocket.host": "127.0.0.1",
+    "harmonyosPreviewer.websocket.port": 5577,
+    "harmonyosPreviewer.autoConnect": true,
+    "harmonyosPreviewer.autoRefresh": true,
+    "harmonyosPreviewer.device.width": 360,
+    "harmonyosPreviewer.device.height": 780,
+    "harmonyosPreviewer.panel.showOnStart": true,
+    "harmonyosPreviewer.logging.level": "info",
+    
+    // 调试设置
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.inlineValues": "on",
+    "debug.showBreakpointsInOverviewRuler": true,
+    
+    // 终端设置
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    
+    // 扩展推荐
+    "extensions.ignoreRecommendations": false,
+    
+    // 工作区特定设置
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    
+    // 问题匹配器
+    "problems.decorations.enabled": true,
+    
+    // Git设置
+    "git.ignoreLimitWarning": true,
+    "git.enableSmartCommit": true,
+    
+    // 测试设置
+    "mochaExplorer.files": "../out/test/**/*.js",
+    "mochaExplorer.env": {
+        "NODE_ENV": "test"
+    }
+}
